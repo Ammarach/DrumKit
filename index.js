@@ -10,6 +10,7 @@ for (var i=0; i<numberOfDrumButton; i++){
 
 document.addEventListener("keypress", function(event) {
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -45,7 +46,17 @@ function makeSound(key) {
         break;
 
         default:
-            console.log(buttonInnerHTML);
+            console.log(key);
 
     }
+
+    buttonAnimation(key);
 } 
+
+function buttonAnimation(currentKey) {
+    var activeButton = document.querySelector("."+currentKey);
+    activeButton.classList.add("pressed");
+    setTimeout(() => {
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
